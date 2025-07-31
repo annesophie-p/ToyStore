@@ -5,24 +5,23 @@ layout: default
 <div class="container">
   <div class="row">
     <div class="col py-4">
-      const listenToAdd = (buttons) => {
-  buttons.forEach((button) => {
-    button.addEventListener('click', (event) => {
-      const { id, name, price } = event.currentTarget.dataset;
-      if (cartLS.exists(id)) {
-        cartLS.quantity(id, 1);
-      } else {
-        cartLS.add({ id, name, price });
-      }
-      dataLayer.push({
-        event: 'add_to_cart',
-        product_id: id,
-        product_name: name,
-        product_price: Number(price)
-      });
-    });
-  });
-};
+      <a href="{{ '/' | relative_url }}">All products</a>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card bg-white p-5">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <h2>{{ page.name }}</h2>
+              <p>{{ content }}</p>
+              {% include product-definition.html %}
+            </div>
+            <div class="col-4">
               <img src="{{ page.image | relative_url }}" alt="{{ page.name }} product image" class="w-100">
             </div>
           </div>
